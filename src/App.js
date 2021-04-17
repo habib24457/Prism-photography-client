@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Appointment from './Components/AppointmentPage/Appointment/Appointment';
 import Dashboard from './Components/Dashboard/Dashboard';
-import UserDashboard from './Components/UserDashboard/UserDashboard';
+//import UserDashboard from './Components/UserDashboard/UserDashboard';
 import Login from './Components/Login/Login';
 import React, { createContext, useState } from 'react';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
@@ -22,41 +22,37 @@ import Payment from './Components/Payment/Payment';
 export const UserContext = createContext('');
 
 function App() {
-  const [loggedinUser,setLoggedinUser] = useState({});
+  const [loggedinUser, setLoggedinUser] = useState({});
   return (
-    <UserContext.Provider value={[loggedinUser,setLoggedinUser]}> 
-    <Router>
-      <Switch>
-        <Route path="/home">
-          <Home></Home>
-        </Route>
-        
-        <PrivateRoute path="/dashboard">
-          <Dashboard></Dashboard>
-        </PrivateRoute>
+    <UserContext.Provider value={[loggedinUser, setLoggedinUser]}>
+      <Router>
+        <Switch>
+          <Route path="/home">
+            <Home></Home>
+          </Route>
+
+          <PrivateRoute path="/dashboard">
+            <Dashboard></Dashboard>
+          </PrivateRoute>
 
 
-        <PrivateRoute path="/userDashboard">
-        <UserDashboard></UserDashboard>
-        </PrivateRoute >
-       
-        <Route path="/login">
-          <Login></Login>
-        </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
 
-        <Route path="/payment">
-          <Payment></Payment>
-        </Route>
+          <Route path="/payment">
+            <Payment></Payment>
+          </Route>
 
-        <Route path="/addAdmin">
-        <AddAdmin></AddAdmin>
-        </Route>
+          <Route path="/addAdmin">
+            <AddAdmin></AddAdmin>
+          </Route>
 
-        <Route path="/appoint">
-         <Appointment></Appointment>
-        </Route>
-      </Switch>
-    </Router>
+          <Route path="/appoint">
+            <Appointment></Appointment>
+          </Route>
+        </Switch>
+      </Router>
     </UserContext.Provider>
   );
 }

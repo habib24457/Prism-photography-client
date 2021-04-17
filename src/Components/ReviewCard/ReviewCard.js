@@ -9,7 +9,7 @@ const ReviewCard = ({review}) => {
                     <Card style={{ width: '25rem',height:'12rem' }}>
                         <Card.Body>
                             <Card.Title>{review.user}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
                             <Card.Text>{review.review}</Card.Text>
                         </Card.Body>
                     </Card>
