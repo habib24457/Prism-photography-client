@@ -14,7 +14,11 @@
 
 
 
+Fantastic, I'm totally blown away by Testimonial Generator.
 
+This is unbelievable. After using Testiminial 
+Generator my buisness skyrocketed!
 
+Awesome Service, I'm totally satisfied by Testimonial Generator
                        
      
