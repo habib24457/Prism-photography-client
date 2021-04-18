@@ -13,7 +13,7 @@ const Payment = () => {
     const [orderedService, setOrderedService] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getService?email=' + loggedinUser.email)
+        fetch('https://infinite-castle-13224.herokuapp.com/getService?email=' + loggedinUser.email)
             .then(response => response.json())
             .then(data => setOrderedService(data));
     }, [loggedinUser.email])

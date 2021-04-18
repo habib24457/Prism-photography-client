@@ -15,28 +15,28 @@ const customStyles = {
 };
 Modal.setAppElement('#root')
 
-const AppointmentModal = ({ modalIsOpen, closeModal,appointService,date }) => {
+const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
+
     const onSubmit = data => {
         data.service = appointService;
         data.date = date;
         data.created = new Date();
-        fetch('http://localhost:5000/addAppointment',{
+        fetch('https://infinite-castle-13224.herokuapp.com/addAppointment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
-        .then(response =>response.json())
-        .then(success =>{
-            if(success){
-                closeModal();
-                alert('Appointment successful');
-            }
-        })
-        
+            .then(response => response.json())
+            .then(success => {
+                if (success) {
+                    closeModal();
+                    alert('Appointment successful');
+                }
+            })
+
     }
-    
+
     return (
         <div>
 
@@ -69,7 +69,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal,appointService,date }) => {
                     </div>
                     <div className="form-group row">
                         <div className="col-4">
-                        <select className="form-control" name="gender" ref={register({ required: true })} >
+                            <select className="form-control" name="gender" ref={register({ required: true })} >
                                 <option disabled={true} value="Not set">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -82,7 +82,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal,appointService,date }) => {
                             <input ref={register({ required: true })} className="form-control" name="age" placeholder="Your Age" type="number" />
                             {errors.age && <span className="text-danger">This field is required</span>}
                         </div>
-                       
+
                     </div>
 
                     <div className="form-group text-right">

@@ -34,7 +34,7 @@ const Dashboard = () => {
     const handleSubmit = () => {
         console.log(userReview);
         userReview.user = loggedinUser.name;
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://infinite-castle-13224.herokuapp.com/addReview', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userReview)
@@ -55,7 +55,7 @@ const Dashboard = () => {
     const handleDateChange = date => {
         setSelectedDate(date);
         const modDate = selectedDate.toDateString();
-        fetch('http://localhost:5000/appointmentsByDate', {
+        fetch('https://infinite-castle-13224.herokuapp.com/appointmentsByDate', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ modDate, email: loggedinUser.email })
