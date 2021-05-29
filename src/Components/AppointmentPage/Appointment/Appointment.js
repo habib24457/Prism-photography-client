@@ -10,14 +10,14 @@ const Appointment = () => {
     const handleDateChange=date =>{
         setSelectedDate(date);
     }
-    return (
+    return ( 
         <Container>
             <AppointmentNav></AppointmentNav>
             <AppointmentHeader handleDateChange={handleDateChange}></AppointmentHeader>
             <BookAppointment date={selectedDate}></BookAppointment>
             <Footer></Footer>
         </Container>
-    );
+    ); 
 };
 
 export default Appointment;

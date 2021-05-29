@@ -1,40 +1,83 @@
 import React from 'react';
 import './Header.css';
-import photoBack from '../../../../images/photoBack.jpg';
+
+import caro1 from '../../../../images/caro1.jpg';
+import caro2 from '../../../../images/caro2.jpg';
+import caro3 from '../../../../images/caro3.jpg';
+
+import background from '../../../../images/back.png';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Carousel } from 'react-bootstrap';
 
 const Header = () => {
     return (
-
-        <Container>
-            <Row md={{ span: 6, offset: 3 }} className="mt-5 pt-5">
-                <Col xs={12} md={8}>
-                    <img src={photoBack} style={{
-                        width: '750px',
-                        height: '550px', borderRadius: '10px'
-                    }} alt="" />
-                </Col>
-
-                <Col xs={6} md={4} className="mt-5">
-                    <div>
-                        <h1>Professional level <span style={{ color: 'rgb(76, 121, 151)' }}>Photography</span> </h1>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Sint qui consequatur repudiandae quaerat perspiciatis commodi!
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Sint qui consequatur repudiandae quaerat perspiciatis commodi!
-                             </p>
-
-                        <Link to="/appoint">
-                            <button class="btn btn-warning">Get an Appointment</button>
-                        </Link>
+        <div style={{
+            backgroundImage: `url(${background})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100vw',
+            height: '80vh'
+        }}>
+            <Container>
+                <div className="row mt-5 pt-5">
+                    <div className="col-md-6  mt-5">
+                        <div>
+                            <h1>Professional level <span style={{ color: 'rgb(76, 121, 151)' }}>Photography</span> </h1>
+                            <p>If you are looking for awesome photography to capture your memorable moments like (Wedding, Parties or Events).
+                            Prism Photography Studio is here to fulfill your demand.
+                        </p>
+                            <Link to="/appoint">
+                                <button class="brand-button">Get an Appointment</button>
+                            </Link>
+                        </div>
                     </div>
-                </Col>
 
+                    <div className="col-md-6  mt-5">
+                        <Carousel>
+                            <Carousel.Item>
+                                <img
+                                    style={{ height: '350px', width: '450px',borderRadius:'2.5%' }}
+                                    className="d-block w-100"
+                                    src={caro1}
+                                    alt="First slide"
+                                />
+                                <Carousel.Caption>
+                                    <h3>Awesome photography</h3>
+                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    style={{ height: '350px', width: '450px',borderRadius:'2.5%' }}
+                                    className="d-block w-100"
+                                    src={caro2}
+                                    alt="Second slide"
+                                />
 
-            </Row>
+                                <Carousel.Caption>
+                                    <h3>Fast delivery</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    style={{ height: '350px', width: '450px',borderRadius:'2.5%' }}
+                                    className="d-block w-100"
+                                    src={caro3}
+                                    alt="Third slide"
+                                />
 
-        </Container>
+                                <Carousel.Caption>
+                                    <h3>Flexible appointments</h3>
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        </Carousel>
+                    </div>
+                </div>
+            </Container>
+        </div>
     );
 };
 

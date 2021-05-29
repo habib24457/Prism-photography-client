@@ -9,7 +9,8 @@ const Footer = () => {
             <div className="row  mt-5">
                 <div className="col-md-4">
                     <h3>Contact Us</h3>
-                    <p>Address:Kleine Stein strasse 16B,45128, Essen.</p>
+                    <p>Address:Essen,Germany</p>
+                    <p>Email:habiburehman390@gmail.com</p>
                     <p>Phone: +491632323232323</p>
                 </div>
 
@@ -24,7 +25,7 @@ const Footer = () => {
                 </div>
 
                 <div className="col-md-4">
-                    <h3>Social Media Links</h3>
+                    <h3>Social media Links</h3>
                     <div style={{ cursor: 'pointer' }} className="d-flex justify-content-around  mt-5">
                         <FontAwesomeIcon icon={faFacebook} size="2x" />
                         <FontAwesomeIcon icon={faTwitter} size="2x" />

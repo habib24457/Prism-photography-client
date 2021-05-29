@@ -51,7 +51,7 @@ const Dashboard = () => {
 
         return false;
     }
-
+ 
     const handleDateChange = date => {
         setSelectedDate(date);
         const modDate = selectedDate.toDateString();
@@ -60,9 +60,9 @@ const Dashboard = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ modDate, email: loggedinUser.email })
         })
-            .then(response => response.json())
-            .then(data => {
-                setAppointmentDates(data);
+        .then(response => response.json())
+        .then(data => {
+        setAppointmentDates(data);
                 // for(var i=0;i<=data.length;i++) {
                 //     let mail = data[i]?.email;
                 //     console.log(mail);
@@ -73,7 +73,7 @@ const Dashboard = () => {
                 //     }
 
                 // }
-            })
+        })
     }
 
 
@@ -93,8 +93,6 @@ const Dashboard = () => {
                             value={new Date()}
                         />
                     </div>
-
-
                 </div>
 
                 <div className="col-md-5 mt-5">
@@ -119,7 +117,6 @@ const Dashboard = () => {
                     </Form>
                 </Col>
             </Row>
-
         </section>
     );
 };

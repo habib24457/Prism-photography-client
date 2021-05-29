@@ -7,7 +7,7 @@ import studioBack from '../../../images/photoBack.jpg';
 
 
 const AppointmentHeader = ({ handleDateChange }) => {
-
+ 
 
     return (
         <div className="row ">

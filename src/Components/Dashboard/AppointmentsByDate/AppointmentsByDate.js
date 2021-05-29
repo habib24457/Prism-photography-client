@@ -7,8 +7,6 @@ const AppointmentsByDate = ({ appointments }) => {
     return (
         <div>
             <h4 className="all-text-color">Appointments by: {appointments.length} people.</h4>
-
-            
                  <div>
                     <Table striped bordered hover>
                         <thead>

@@ -26,12 +26,12 @@ const photographyServices = [
 
 const Services = () => {
     return (
+        <div style={{backgroundColor:'#378369'}}>
         <Container>
             <div className="d-flex justify-content-center">
-                <div className="row w-75">
+                <div className="row w-75  mt-5">
                     <div className="col-md-12 text-center">
-                        <h1> <span className="text-secondary">Our Photography</span>
-                            <span style={{ color: 'rgb(76, 121, 151)' }}> Services</span></h1>
+                        <h1>Our Services</h1>
                     </div>
                 </div>
             </div>
@@ -48,6 +48,7 @@ const Services = () => {
                 </div>
             </div>
         </Container>
+        </div>
     );
 };
 

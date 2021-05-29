@@ -1,5 +1,6 @@
 {
   "name": "prism-photography",
+  "homepage": "https://prism-photo-studio.firebaseapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "swiper": "^6.6.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

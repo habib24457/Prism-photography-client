@@ -86,7 +86,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date }) => 
                     </div>
 
                     <div className="form-group text-right">
-                        <button type="submit" className="btn btn-warning">Make an Appointment</button>
+                        <button type="submit" className="brand-button">Make an Appointment</button>
                     </div>
                 </form>
 

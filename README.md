@@ -11,14 +11,13 @@
     ->ExpressJs  
 
 
-
-
-
-Fantastic, I'm totally blown away by Testimonial Generator.
-
-This is unbelievable. After using Testiminial 
-Generator my buisness skyrocketed!
-
-Awesome Service, I'm totally satisfied by Testimonial Generator
                        
      
+
+                    <Card style={{ width: '25rem',height:'12rem' }}>
+                        <Card.Body>
+                            <Card.Title>{review.user}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
+                            <Card.Text>{review.review}</Card.Text>
+                        </Card.Body>
+                    </Card>

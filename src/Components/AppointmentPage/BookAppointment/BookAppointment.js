@@ -38,13 +38,7 @@ const availableServices = [
 
 
 const BookAppointment = ({ date }) => {
-
-
-
-
     const userSelectedDate = date.toDateString();
-
-
     return (
         <section>
             <div className="row mt-5 pt-5 pb-5 d-flex justify-content-center">

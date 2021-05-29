@@ -44,12 +44,13 @@ const Login = () => {
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                const { displayName, email } = result.user;
-                const signedInUser = { name: displayName, email };
+                console.log(result.user);
+                const { displayName, email,photoURL } = result.user;
+                const signedInUser = { name: displayName, email,photo:photoURL };
+                sessionStorage.setItem('email', signedInUser.email);
                 setLoggedinUser(signedInUser);
                 //setUserToken();
                 checkAdmin(email);
-                
                 history.replace(from);
 
             }).catch((error) => {

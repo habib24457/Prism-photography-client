@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css';
 import Header from './Header/Header';
 import Services from '../Services/Services';
-import ImageGallery from '../ImageGallery/ImageGallery';
+//import ImageGallery from '../ImageGallery/ImageGallery';
 import Review from '../Review/Review';
 import Footer from '../Footer/Footer';
 import NavigationBar from './NavigationBar/NavigationBar';
@@ -14,7 +14,6 @@ const Home = () => {
         <div>
             <NavigationBar></NavigationBar>
             <Header></Header>
-            <ImageGallery></ImageGallery>
             <Services></Services>
             <Photographers></Photographers>
            <Review></Review>
