@@ -16,6 +16,9 @@ import AddAdmin from './Components/AddAdmin/AddAdmin';
 import Payment from './Components/Payment/Payment';
 import Contact from './Components/Contact/Contact';
 import Admin from './Components/Admin/Admin';
+import CheckReviews from './Components/Admin/CheckReviews/CheckReviews';
+import ClientOrders from './Components/Admin/ClientOrders/ClientOrders';
+import CheckAdmin from './Components/Admin/CheckAdmin/CheckAdmin';
 
 export const UserContext = createContext('');
 
@@ -43,9 +46,18 @@ function App() {
           <Route path="/addAdmin">
             <AddAdmin></AddAdmin>
           </Route>
+          <Route path="/checkReview">
+            <CheckReviews></CheckReviews>
+          </Route>
+          <Route path="/clientOrders">
+            <ClientOrders></ClientOrders>
+          </Route>
           <Route path="/admin">
             <Admin></Admin>
           </Route>
+          <PrivateRoute path="/checkAdmin">
+            <CheckAdmin></CheckAdmin>
+          </PrivateRoute>
           <Route path="/contact">
             <Contact></Contact>
           </Route>

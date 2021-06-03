@@ -1,11 +1,30 @@
 import React from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Button } from 'react-bootstrap';
+import {Notify} from '../Notify/Notify';
 
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
     const stripe = useStripe();
     const elements = useElements();
+    
+ 
+    const savingPaymentData = (userPaymentData)=>{
+        console.log(userPaymentData);
+        fetch('http://localhost:5000/addPayment',{
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userPaymentData)
+        })
+        .then(response => response.json())
+        .then(data =>{
+            if(data){
+                Notify(2);
+            }else{
+               Notify(3);
+            }  
+        })
+    }
 
     const handleSubmit = async (event) => {
         // Block native form submission.
@@ -32,7 +51,11 @@ const CheckoutForm = () => {
             console.log('[error]', error);
         } else {
             console.log('[PaymentMethod]', paymentMethod);
-            alert("Payment Successful");
+            const isPaid = true;
+            const payment = {...props};
+            payment.status = isPaid;
+            payment.cardData = {...paymentMethod};
+            savingPaymentData(payment);
         }
     };
 
@@ -42,6 +65,7 @@ const CheckoutForm = () => {
             <Button className="mt-5" variant="warning" type="submit" disabled={!stripe}>
                Finish Payment
             </Button>
+            
         </form>
     );
 };

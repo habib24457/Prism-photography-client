@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome,faPlus,faCalendarCheck,faBook} from '@fortawesome/free-solid-svg-icons';
+import {faHome,faPlus,faCalendarCheck,faBook,faToolbox} from '@fortawesome/free-solid-svg-icons';
 
 export const SidebarData =[
     {
@@ -9,18 +9,23 @@ export const SidebarData =[
         link: '/home',
     },
     {
-        title: 'Client orders',
+        title: 'Appointments',
         icon: <FontAwesomeIcon icon={faCalendarCheck}/>,
         link: '/admin',
-    },
+    }, 
+    {
+        title: 'Client Orders',
+        icon: <FontAwesomeIcon icon={faToolbox}/>,
+        link: '/clientOrders',
+    }, 
     {
         title: 'Add admin',
         icon: <FontAwesomeIcon icon={faPlus}/>,
-        link: '/add',
+        link: '/addAdmin',
     },
     {
         title: 'Check reviews',
         icon: <FontAwesomeIcon icon={faBook}/>,
-        link: '/check',
+        link: '/checkReview',
     }
 ]

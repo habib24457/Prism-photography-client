@@ -1,10 +1,17 @@
 import React from 'react';
 import {Row,Col,Navbar,Nav,Container,Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link,useHistory} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCameraRetro,faUsersCog,faShoppingCart,faPhone} from '@fortawesome/free-solid-svg-icons'
 
 const NavigationBar = () => {
+    const email = sessionStorage.getItem('email');
+    const history = useHistory();
+    const handlesignOut=()=>{
+        sessionStorage.removeItem('email');
+        history.replace('/home');
+    }
+
     return (
         <Container>
               <Row>
@@ -19,7 +26,7 @@ const NavigationBar = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                             <Nav>
-                                <Nav.Link href="/admin"> 
+                                <Nav.Link href="/checkAdmin"> 
                                 <FontAwesomeIcon  style={{color:'#ffffff'}} icon={faUsersCog}/>
                                 <span  style={{color:'#ffffff',padding:'10px'}}>Admin</span> 
                                 </Nav.Link>
@@ -31,9 +38,13 @@ const NavigationBar = () => {
                                 <FontAwesomeIcon style={{color:'#ffffff'}}  icon={faPhone}/>
                                     <span  style={{color:'#ffffff',padding:'10px'}}>Contact</span>
                                     </Nav.Link>
-                                <Link to="/login">
-                                    <Button variant="warning">Login</Button>
-                                </Link>
+                                    {
+                                        email?<Button onClick={handlesignOut} variant="warning">Logout</Button>:
+                                         <Link to="/login">
+                                        <Button variant="warning">Login</Button>
+                                    </Link>
+                                    }
+                               
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

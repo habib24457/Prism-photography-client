@@ -1,20 +1,21 @@
 import React, { useState, useContext } from 'react';
-import AppointmentsByDate from './AppointmentsByDate/AppointmentsByDate';
-import Sidebar from './Sidebar/Sidebar';
+import NavigationBar from '../HomePage/Home/NavigationBar/NavigationBar';
+import Payment from '../Payment/Payment';
+//import AppointmentsByDate from './AppointmentsByDate/AppointmentsByDate';
+//import Sidebar from './Sidebar/Sidebar';
 import 'react-calendar/dist/Calendar.css';
-import Calendar from 'react-calendar';
+//import Calendar from 'react-calendar';
 import { UserContext } from '../../App';
-import { Row, Col, Form, Button } from 'react-bootstrap';
-const containerStyle = {
-    height: '100%',
-    right: 0, backgroundColor: '#F4FDFB'
-}
+import {Form, Button, Container } from 'react-bootstrap';
+import reviewPhoto from '../../images/reviewPhoto.jpg';
+import {Notify} from '../Notify/Notify';
+
 
 
 
 const Dashboard = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [appointmentDates, setAppointmentDates] = useState([]);
+    //const [selectedDate, setSelectedDate] = useState(new Date());
+    // const [appointmentDates, setAppointmentDates] = useState([]);
     const [loggedinUser, setLoggedinUser] = useContext(UserContext);
     //const [adminMail,setAdminMail] = useState(null);
     console.log(loggedinUser.name);
@@ -42,7 +43,7 @@ const Dashboard = () => {
             .then(response => response.json())
             .then(success => {
                 if (success) {
-                    alert('Review added');
+                    Notify(1);
                 }
             })
             .catch(error => {
@@ -51,7 +52,8 @@ const Dashboard = () => {
 
         return false;
     }
- 
+
+    /** 
     const handleDateChange = date => {
         setSelectedDate(date);
         const modDate = selectedDate.toDateString();
@@ -75,35 +77,21 @@ const Dashboard = () => {
                 // }
         })
     }
-
+*/
 
 
     return (
-        <section>
-            <div style={containerStyle} className="container-fluid row text-center">
-                <div className="col-md-2">
-                    <Sidebar></Sidebar>
-                </div>
+        <Container>
+            <NavigationBar></NavigationBar>
+            <section>
+                <Payment></Payment>
+            </section>
 
-                <div className="col-md-5 d-flex justify-content-center mt-5">
-                    <div>
-                        <h4 className="all-text-color">Click on dates to see appointments.</h4>
-                        <Calendar
-                            onChange={handleDateChange}
-                            value={new Date()}
-                        />
-                    </div>
-                </div>
+            <div className="row mt-5 border-top">
 
-                <div className="col-md-5 mt-5">
-                    <AppointmentsByDate appointments={appointmentDates}></AppointmentsByDate>
-                </div>
-            </div>
-
-            <Row className="d-flex justify-content-center mt-5 pt-5 pb-5">
-                <Col md={{ span: 6, offset: 3 }}>
-                    <h1 className="all-text-color text-center">Write a review</h1>
-                    <Form className="admin-form-design shadow p-5">
+                <div className="col-md-6 ">
+                <h1 className="all-text-color text-center">Write a review</h1>
+                    <Form className="admin-form-design shadow p-5 border-top">
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Write something...</Form.Label>
                             <Form.Control onBlur={handleBlur} as="textarea" name="review" rows={3} placeholder="Share your opinion..." />
@@ -115,9 +103,14 @@ const Dashboard = () => {
                          </Button>
                         </Form.Group>
                     </Form>
-                </Col>
-            </Row>
-        </section>
+                </div>
+
+                <div className="col-md-6 all-text-color text-center">
+                <img src={reviewPhoto} style={{ width:'350px'}} alt=""/>
+                </div>
+            </div>
+
+        </Container>
     );
 };
 

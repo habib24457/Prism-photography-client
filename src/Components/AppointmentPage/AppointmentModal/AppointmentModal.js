@@ -2,6 +2,7 @@ import React from 'react';
 import './AppointmentModal.css';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
+import {Notify} from '../../Notify/Notify';
 
 const customStyles = {
     content: {
@@ -12,15 +13,16 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)'
     }
-};
+}; 
 Modal.setAppElement('#root')
 
-const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date }) => {
+const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date, price }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+console.log(appointService)
     const onSubmit = data => {
         data.service = appointService;
         data.date = date;
+        data.price = price;
         data.created = new Date();
         fetch('https://infinite-castle-13224.herokuapp.com/addAppointment', {
             method: 'POST',
@@ -30,8 +32,9 @@ const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date }) => 
             .then(response => response.json())
             .then(success => {
                 if (success) {
+                    Notify(6);
                     closeModal();
-                    alert('Appointment successful');
+                   // alert('Appointment successful');
                 }
             })
 
@@ -50,6 +53,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal, appointService, date }) => 
                 <div>
                     <h4 className="all-text-color">{appointService}</h4>
                     <h4> <span className="all-text-color">Selected Date: </span>  <small>{date}</small> </h4>
+                    <h4> <span className="all-text-color">Price:{price}$</span></h4>
 
                 </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 //import NavigationBar from '../HomePage/Home/NavigationBar/NavigationBar';
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 import Calendar from 'react-calendar';
@@ -7,11 +7,9 @@ import './Admin.css';
 const Admin = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [appointmentDates, setAppointmentDates] = useState([]);
+  const date = selectedDate.toDateString();
 
-
-  const handleDateChange = dateChoose => {
-    setSelectedDate(dateChoose);
-    const date = selectedDate.toDateString();
+  useEffect(() => {
     fetch('http://localhost:5000/byDate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -21,7 +19,26 @@ const Admin = () => {
       .then(data => {
         setAppointmentDates(data);
       })
+  },[date])
+
+  const handleDateChange = dateChoose => {
+    setSelectedDate(dateChoose);
   }
+
+
+  const handleDone = (id)=>{
+    console.log(id);
+    fetch(`http://localhost:5000/removeClientAppointment/${id}`,{
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(result=>{
+      console.log(result);
+      window.location.reload();
+    })
+  }
+
+
 
   //console.log(selectedDate.toDateString())
   console.log(appointmentDates)
@@ -66,7 +83,7 @@ const Admin = () => {
                 <td>{appointment.date}</td>
                 <td>Paid</td>
                 <td>
-                  <button className="btn btn-warning">Done</button>
+                  <button onClick={()=>{handleDone(appointment._id)}} className="btn btn-warning">Done</button>
                 </td>
               </tr>)
             }
