@@ -8,8 +8,8 @@ Live:https://prism-photo-studio.web.app/
     ->User can write reviews.
     ->User can pay for their ordered services.  
     ->The admin can add a new admin. 
-    ->The admin can update data in website.
-    ->The admin can check ordered services and appointments.
+    ->The admin can update data in website.  
+    ->The admin can check ordered services and appointments.  
     ->The admin can review all the functionalities.  
     
 #Tools: 
