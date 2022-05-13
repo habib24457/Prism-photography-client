@@ -1,26 +1,32 @@
 import React,{ useState,useEffect} from 'react';
 import './CheckReviews.css';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import {APILink} from "../../../API_URL/API_URL";
 
 const CheckReviews = () => {
 const [reviews,setReviews] = useState([]);
 
+useEffect(()=>{
+    loadReview();
+},[]);
+
+const loadReview =()=>{
+    fetch(APILink+'/reviews')
+            .then(response=> response.json()).then(data =>setReviews(data))
+    };
+
 const handleReviewRemove=(id)=>{
-fetch(`http://localhost:5000/removeReview/${id}`,{
+fetch(`${APILink}/removeReview/${id}`,{
     method:'DELETE'
 })
-.then (response => response.json())
 .then(result=>{
-    console.log(result);
-    //window.location.reload();
+   console.log(result);
+   loadReview();
 })
-}
+};
 
-useEffect(() => {
-    fetch('http://localhost:5000/reviews')
-    .then(response=> response.json())
-    .then(data =>setReviews(data))
-},[])
+
+
 
 console.log(reviews)
     return (

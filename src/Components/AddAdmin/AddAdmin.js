@@ -13,12 +13,10 @@ const AddAdmin = () => {
     //const [file, setFile] = useState(null);
     const [info, setInfo] = useState({});
     const [adminData, setAdminData] = useState([]);
-    const [isAdminSaved,setIsAdminSaved] = useState(false);
-    const [adminUpdate,setAdminUpdate] = useState("");
 
     useEffect(() => {
         loadAvailableAmin();
-    }, [adminUpdate,isAdminSaved])
+    }, [])
 
     const loadAvailableAmin =()=>{
         fetch(APILink+"/getAdmin")
@@ -36,7 +34,6 @@ const AddAdmin = () => {
     }
     console.log(info);
     const addNewAdmin = (e) => {
-        setAdminUpdate("Saved");
         e.preventDefault();
         fetch(APILink+'/addOneAdmin', {
             method: 'POST',
@@ -48,9 +45,9 @@ const AddAdmin = () => {
             .then(res => {
                 console.log(res.status)
                 if(res.status === 200){
-                    setIsAdminSaved(true);
+                    loadAvailableAmin();
                 }else{
-                    setIsAdminSaved(false);
+                    loadAvailableAmin();
                 }
             })
             .catch(error => {
@@ -59,14 +56,13 @@ const AddAdmin = () => {
     }
 
     const handleRemoveAdmin = (id) => {
-        setAdminUpdate("removed");
         fetch(`${APILink}/removeAdmin/${id}`, {
             method: 'DELETE'
         }).then(result => {
                 if(result.status===200){
-                    setIsAdminSaved(true);
+                    loadAvailableAmin();
                 }else{
-                    setIsAdminSaved(true);
+                    loadAvailableAmin();
                 }
                 console.log(result);
                 //window.location.reload();

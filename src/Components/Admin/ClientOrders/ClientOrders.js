@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ClientOrders.css';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import ClientOrderModal from '../ClientOrderModal/ClientOrderModal';
+import {APILink} from "../../../API_URL/API_URL";
 
 const ClientOrders = () => {
     const [paymentData, setPaymentData] = useState([]);
@@ -15,23 +16,29 @@ const ClientOrders = () => {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+    getPaymentData();
+    }, [])
+
     const handleOrderRemove=(id)=>{
-        fetch(`http://localhost:5000/removeClientOrder/${id}`,{
+        fetch(`${APILink}/removeClientOrder/${id}`,{
             method: 'DELETE'
         })
         .then(response=> response.json())
         .then(result=>{
+            getPaymentData();
             console.log(result);
-            //window.location.reload();
         })
     }
 
-
-    useEffect(() => {
-        fetch('http://localhost:5000/getPayment')
+    const getPaymentData=()=>{
+        fetch(APILink+'/getPayment')
             .then(response => response.json())
             .then(data => setPaymentData(data))
-    }, [])
+    };
+
+
+
 
     console.log(paymentData);
 
