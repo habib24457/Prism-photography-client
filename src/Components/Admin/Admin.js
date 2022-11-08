@@ -3,6 +3,7 @@ import React, { useState,useEffect } from 'react';
 import AdminSidebar from './AdminSidebar/AdminSidebar';
 import Calendar from 'react-calendar';
 import './Admin.css';
+import { API_URL } from '../Constants/Constant';
 
 const Admin = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -10,7 +11,7 @@ const Admin = () => {
   const date = selectedDate.toDateString();
 
   useEffect(() => {
-    fetch('http://localhost:5000/byDate', {
+    fetch(API_URL+'/byDate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ date })
@@ -19,6 +20,7 @@ const Admin = () => {
       .then(data => {
         setAppointmentDates(data);
       })
+      .catch(err=>console.log(err))
   },[date])
 
   const handleDateChange = dateChoose => {
@@ -28,14 +30,15 @@ const Admin = () => {
 
   const handleDone = (id)=>{
     console.log(id);
-    fetch(`http://localhost:5000/removeClientAppointment/${id}`,{
+    fetch(API_URL+`/removeClientAppointment/${id}`,{
       method: 'DELETE'
     })
     .then(response => response.json())
     .then(result=>{
       console.log(result);
-      window.location.reload();
     })
+    .catch(err=>console.log(err))
+
   }
 
 
