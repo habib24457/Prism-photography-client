@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom';
 import NavigationBar from '../../HomePage/Home/NavigationBar/NavigationBar';
 import './CheckAdmin.css';
 import {Notify} from '../../Notify/Notify';
+import { API_URL } from '../../Constants/Constant';
 
 const CheckAdmin = () => {
     const [isAdmin,setIsAdmin] = useState(false);
@@ -13,7 +14,7 @@ const CheckAdmin = () => {
     
     const validateAdmin=()=>{
         console.log(email)
-      fetch(`http://localhost:5000/checkAdmin/${email}`)
+      fetch(API_URL+`/checkAdmin/${email}`)
       .then(res => res.json())
       .then(data => {
           if (data) {
@@ -22,7 +23,7 @@ const CheckAdmin = () => {
               console.log(data);
               setIsAdmin(true);
           }
-      });
+      }).catch(err=>console.log(err));
     }
 
     const superAdmin =()=>{
