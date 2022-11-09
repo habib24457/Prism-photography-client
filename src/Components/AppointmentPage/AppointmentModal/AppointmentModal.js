@@ -3,6 +3,7 @@ import './AppointmentModal.css';
 import Modal from 'react-modal';
 import { useForm } from "react-hook-form";
 import {Notify} from '../../Notify/Notify';
+import {API_URL} from "../../Constants/Constant";
 
 const customStyles = {
     content: {
@@ -24,7 +25,7 @@ console.log(appointService)
         data.date = date;
         data.price = price;
         data.created = new Date();
-        fetch('https://infinite-castle-13224.herokuapp.com/addAppointment', {
+        fetch(API_URL+"/addAppointment", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -36,7 +37,7 @@ console.log(appointService)
                     closeModal();
                    // alert('Appointment successful');
                 }
-            })
+            }).catch(err=>console.log(err));
 
     }
 

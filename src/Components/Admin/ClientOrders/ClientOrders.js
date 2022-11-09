@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ClientOrders.css';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import ClientOrderModal from '../ClientOrderModal/ClientOrderModal';
+import { API_URL } from '../../Constants/Constant';
 
 const ClientOrders = () => {
     const [paymentData, setPaymentData] = useState([]);
@@ -16,21 +17,22 @@ const ClientOrders = () => {
     }
 
     const handleOrderRemove=(id)=>{
-        fetch(`http://localhost:5000/removeClientOrder/${id}`,{
+        fetch(API_URL+`/removeClientOrder/${id}`,{
             method: 'DELETE'
         })
         .then(response=> response.json())
         .then(result=>{
             console.log(result);
-            window.location.reload();
         })
+        .catch((err)=>console.log(err));
     }
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/getPayment')
+        fetch(API_URL+'/getPayment')
             .then(response => response.json())
             .then(data => setPaymentData(data))
+            .catch((err)=>console.log(err));
     }, [])
 
     console.log(paymentData);

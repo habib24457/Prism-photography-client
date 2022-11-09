@@ -1,12 +1,13 @@
 import React,{ useState,useEffect} from 'react';
 import './CheckReviews.css';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import { API_URL } from '../../Constants/Constant';
 
 const CheckReviews = () => {
 const [reviews,setReviews] = useState([]);
 
 const handleReviewRemove=(id)=>{
-fetch(`http://localhost:5000/removeReview/${id}`,{
+fetch(API_URL+`/removeReview/${id}`,{
     method:'DELETE'
 })
 .then (response => response.json())
@@ -17,7 +18,7 @@ fetch(`http://localhost:5000/removeReview/${id}`,{
 }
 
 useEffect(() => {
-    fetch('http://localhost:5000/reviews')
+    fetch(API_URL+'/reviews')
     .then(response=> response.json())
     .then(data =>setReviews(data))
 },[])

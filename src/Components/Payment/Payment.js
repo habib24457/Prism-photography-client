@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from './PaymentCard';
 import { UserContext } from '../../App';
 import NavigationBar from '../HomePage/Home/NavigationBar/NavigationBar';
+import { API_URL } from '../Constants/Constant';
 
 const stripePromise = loadStripe('pk_test_51IhJfaKSu2UCBkjrmudHYyuSve1JRUdu2YnlbhaIRDGM4MM4sHkJUWrZXvficsncoRRozsKBe8QwyVaIJikKpEyp00qYSKyjSj');
 
@@ -14,7 +15,7 @@ const Payment = () => {
     const [orderedService, setOrderedService] = useState([]);
     const [total,setTotal] = useState(0);
 
-    const e = sessionStorage.getItem('email');
+    const email = sessionStorage.getItem('email');
     console.log(loggedinUser,orderedService);
 
     const paymentData ={ 
@@ -25,23 +26,22 @@ const Payment = () => {
     console.log((paymentData));
 
     useEffect(() => {
-        fetch('https://infinite-castle-13224.herokuapp.com/getService?email=' + e)
+        fetch(API_URL+'/getService?email=' + email)
             .then(response => response.json())
             .then(data =>{
                 setOrderedService(data)
                 calculateTotal(data);
-            });
-    }, [e])
+            }).catch((err)=>console.log(err));
+    }, [email])
 
     const handleRemoveService=(id)=>{
-        fetch(`http://localhost:5000/removeItem/${id}`,{
+        fetch(API_URL+`/removeItem/${id}`,{
             method: 'DELETE'
         })
         .then(response => response.json())
         .then(data=>{
             console.log(data);
-            window.location.reload();
-        })
+        }).catch(err=>console.log(err));
     }
 
 

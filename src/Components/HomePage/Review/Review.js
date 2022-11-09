@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Container, Col } from 'react-bootstrap';
 import ReviewCard from '../../ReviewCard/ReviewCard';
 import ReactLoading from 'react-loading';
+import { API_URL } from '../../Constants/Constant';
 
 
 
@@ -12,13 +13,13 @@ const Review = () => {
 
 
     useEffect(() => {
-        fetch('https://infinite-castle-13224.herokuapp.com/reviews')
+        fetch( API_URL+'/reviews')
             .then(response => response.json())
             .then(data => {
                 setReviews(data)
                 setDone(true);
 
-            });
+            }).catch((err)=>console.log(err));
     }, [])
 
     console.log(reviews)

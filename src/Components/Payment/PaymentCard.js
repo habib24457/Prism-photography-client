@@ -2,6 +2,7 @@ import React from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { Button } from 'react-bootstrap';
 import {Notify} from '../Notify/Notify';
+import { API_URL } from '../Constants/Constant';
 
 
 const CheckoutForm = (props) => {
@@ -11,7 +12,7 @@ const CheckoutForm = (props) => {
  
     const savingPaymentData = (userPaymentData)=>{
         console.log(userPaymentData);
-        fetch('http://localhost:5000/addPayment',{
+        fetch(API_URL+'/addPayment',{
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(userPaymentData)
