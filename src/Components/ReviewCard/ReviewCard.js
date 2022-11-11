@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "react-bootstrap";
 import "./ReviewCard.css";
 import { FaStar } from "react-icons/fa";
 

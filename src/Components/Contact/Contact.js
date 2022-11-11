@@ -1,6 +1,5 @@
 import React from "react";
 import NavigationBar from "../HomePage/Home/NavigationBar/NavigationBar";
-import Footer from "../HomePage/Footer/Footer";
 import "./Contact.css";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -111,7 +110,11 @@ const Contact = () => {
                         icon={faTwitter}
                         size="2x"
                       />
-                      <FontAwesomeIcon icon={faInstagram} size="2x" />
+                      <FontAwesomeIcon
+                        className="mr-2"
+                        icon={faInstagram}
+                        size="2x"
+                      />
                     </div>
                   </div>
                 </div>

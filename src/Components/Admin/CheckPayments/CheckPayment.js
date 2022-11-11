@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import AdminSidebar from "../AdminSidebar/AdminSidebar";
 import { API_URL } from "../../Constants/Constant";
 

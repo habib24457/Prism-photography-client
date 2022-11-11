@@ -28,6 +28,7 @@ const Payment = () => {
 
   useEffect(() => {
     getServices();
+    //eslint-disable-next-line
   }, [email]);
 
   const getServices = () => {
