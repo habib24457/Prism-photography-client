@@ -1,27 +1,24 @@
-import './App.css';
-import Home from './Components/HomePage/Home/Home';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Appointment from './Components/AppointmentPage/Appointment/Appointment';
-import Dashboard from './Components/Dashboard/Dashboard';
+import "./App.css";
+import Home from "./Components/HomePage/Home/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Appointment from "./Components/AppointmentPage/Appointment/Appointment";
+import Dashboard from "./Components/Dashboard/Dashboard";
 //import UserDashboard from './Components/UserDashboard/UserDashboard';
-import Login from './Components/Login/Login';
-import React, { createContext, useState } from 'react';
-import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import AddAdmin from './Components/AddAdmin/AddAdmin';
-import Payment from './Components/Payment/Payment';
-import Contact from './Components/Contact/Contact';
-import Admin from './Components/Admin/Admin';
-import CheckReviews from './Components/Admin/CheckReviews/CheckReviews';
-import ClientOrders from './Components/Admin/ClientOrders/ClientOrders';
-import CheckAdmin from './Components/Admin/CheckAdmin/CheckAdmin';
-import Statistics from './Components/Admin/Statistics/Statistics';
+import Login from "./Components/Login/Login";
+import React, { createContext, useState } from "react";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import AddAdmin from "./Components/AddAdmin/AddAdmin";
+import Payment from "./Components/Payment/Payment";
+import Contact from "./Components/Contact/Contact";
+import Admin from "./Components/Admin/Admin";
+import CheckReviews from "./Components/Admin/CheckReviews/CheckReviews";
+import ClientOrders from "./Components/Admin/ClientOrders/ClientOrders";
+import CheckAdmin from "./Components/Admin/CheckAdmin/CheckAdmin";
+import Statistics from "./Components/Admin/Statistics/Statistics";
+import CheckPayment from "./Components/Admin/CheckPayments/CheckPayment";
 
-export const UserContext = createContext('');
+export const UserContext = createContext("");
 
 function App() {
   const [loggedinUser, setLoggedinUser] = useState({});
@@ -65,8 +62,12 @@ function App() {
           <Route path="/appoint">
             <Appointment></Appointment>
           </Route>
-          <Route path="/statistics" >
+          <Route path="/statistics">
             <Statistics></Statistics>
+          </Route>
+
+          <Route path="/checkPayment">
+            <CheckPayment></CheckPayment>
           </Route>
         </Switch>
       </Router>

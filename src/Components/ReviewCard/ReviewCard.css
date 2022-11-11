@@ -1,3 +1,13 @@
 .card-design{
-    box-shadow: 10px 5px 5px #5b9dbb;
+    width: 10rem;
+    height: 6rem;
+    box-shadow: 10px 5px 5px #e4e6e7;
+    text-align: center;
+    margin:15px;
+    background-color: blanchedalmond;
+}
+
+.stars{
+    align-items: center;
+    margin-top:10px;
 }

@@ -48,16 +48,22 @@ const CheckoutForm = (props) => {
             card: cardElement,
         });
 
-        if (error) {
-            console.log('[error]', error);
-        } else {
-            console.log('[PaymentMethod]', paymentMethod);
-            const isPaid = true;
-            const payment = {...props};
-            payment.status = isPaid;
-            payment.cardData = {...paymentMethod};
-            savingPaymentData(payment);
+        try{
+            if (error) {
+                console.log('[error]', error);
+            } else {
+                console.log('[PaymentMethod]', paymentMethod);
+                const isPaid = true;
+                const payment = {...props};
+                payment.status = isPaid;
+                payment.cardData = {...paymentMethod};
+                savingPaymentData(payment);
+            }
+        }catch(err){
+            console.log(err);
         }
+
+       
     };
 
     return (
