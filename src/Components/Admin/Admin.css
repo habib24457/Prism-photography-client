@@ -2,3 +2,10 @@
     width:100vw;
     height: 100vh;
 }
+
+.admin-button{
+    height: 30px;
+    width: 70px;
+    margin-bottom: 5px;
+    text-align: center;
+}

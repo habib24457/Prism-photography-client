@@ -26,7 +26,7 @@ const NavigationBar = () => {
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                             <Nav>
-                                <Nav.Link href="/checkAdmin"> 
+                                <Nav.Link href="/admin"> 
                                 <FontAwesomeIcon  style={{color:'#ffffff'}} icon={faUsersCog}/>
                                 <span  style={{color:'#ffffff',padding:'10px'}}>Admin</span> 
                                 </Nav.Link>

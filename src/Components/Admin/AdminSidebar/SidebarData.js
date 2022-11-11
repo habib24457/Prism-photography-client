@@ -14,15 +14,15 @@ export const SidebarData =[
         link: '/admin',
     }, 
     {
-        title: 'Client Orders',
+        title: 'Statistics',
         icon: <FontAwesomeIcon icon={faToolbox}/>,
-        link: '/clientOrders',
+        link: '/statistics',
     }, 
-    {
-        title: 'Add admin',
-        icon: <FontAwesomeIcon icon={faPlus}/>,
-        link: '/addAdmin',
-    },
+    // {
+    //     title: 'Add admin',
+    //     icon: <FontAwesomeIcon icon={faPlus}/>,
+    //     link: '/addAdmin',
+    // },
     {
         title: 'Check reviews',
         icon: <FontAwesomeIcon icon={faBook}/>,

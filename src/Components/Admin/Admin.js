@@ -4,69 +4,83 @@ import AdminSidebar from './AdminSidebar/AdminSidebar';
 import Calendar from 'react-calendar';
 import './Admin.css';
 import { API_URL } from '../Constants/Constant';
+import EditAppointmentModal from './EditAdminModal/EditAdminModal';
 
 const Admin = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [appointmentDates, setAppointmentDates] = useState([]);
+  const [appointments, setAppointments] = useState([]);
+  const [modalIsOpen, setIsModalOpen] = useState(false);
+  const [closeModal,setCloseModal] = useState(false);
+  const [inputData,setInputData] = useState({});
   const date = selectedDate.toDateString();
+  const [isEdited,setIsEdited] = useState(false);
 
-  useEffect(() => {
-    fetch(API_URL+'/byDate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ date })
-    })
-      .then(response => response.json())
-      .then(data => {
-        setAppointmentDates(data);
-      })
-      .catch(err=>console.log(err))
-  },[date])
+  console.log(closeModal);
+
+  // useEffect(() => {
+  //   fetch(API_URL+'/byDate', {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify({ date })
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setAppointmentDates(data);
+  //     })
+  //     .catch(err=>console.log(err))
+  // },[date])
+
+  useEffect(()=>{
+    getAppointments();
+  },[isEdited])
+
+  const getAppointments =()=>{
+      fetch(API_URL+'/appointments')
+      .then(res=>res.json())
+      .then(data=>setAppointments(data))
+      .catch(err=>console.log(err));
+  };
 
   const handleDateChange = dateChoose => {
     setSelectedDate(dateChoose);
   }
 
 
-  const handleDone = (id)=>{
+  const handleDelete = (id)=>{
     console.log(id);
-    fetch(API_URL+`/removeClientAppointment/${id}`,{
+    fetch(API_URL+`/deleteAppointment/${id}`,{
       method: 'DELETE'
     })
     .then(response => response.json())
-    .then(result=>{
+    .then((result) =>{
+      getAppointments();
       console.log(result);
-    })
-    .catch(err=>console.log(err))
+    }).catch(err=>console.log(err))
 
   }
 
+  const handleEdit =(id)=>{
+    const selectedRow = appointments.filter((appointment)=>appointment._id === id);
+    setInputData(selectedRow[0]);
+    //console.log(selectedRow);
+    setIsModalOpen(true);
+  };
 
 
   //console.log(selectedDate.toDateString())
-  console.log(appointmentDates)
+  //console.log(appointmentDates)
 
 
   return (
     <div className="admin row">
-      <div className="col-md-3">
+      <div className="col-md-2">
         <AdminSidebar></AdminSidebar>
       </div>
 
-      <div className="col-md-3">
-        <div className="col-md-5 d-flex justify-content-center mt-5">
-          <div>
-            <h4 className="all-text-color">Double click on dates to see appointments.</h4>
-            <Calendar
-              onChange={handleDateChange}
-              value={new Date()}
-            />
-          </div>
-        </div>
-      </div>
+      <EditAppointmentModal setIsEdited={setIsEdited} inputData ={inputData} setInputData={setInputData} modalIsOpen={modalIsOpen}  closeModal={closeModal} setIsModalOpen={setIsModalOpen}></EditAppointmentModal>
 
-      <div className="col-md-6 mt-5">
-        <h4>Total <span className="all-text-color">{appointmentDates?.length}</span> appointments on <span className="all-text-color">{selectedDate.toDateString()}</span></h4>
+      <div className="col-md-10 mt-5">
+        <h4>Total <span className="all-text-color">{appointments?.length}</span> upcoming appointments</h4>
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -74,19 +88,25 @@ const Admin = () => {
               <th scope="col">Ordered service</th>
               <th scope="col">Appointment Date</th>
               <th scope="col">Payment status</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
 
           <tbody>
             {
-              appointmentDates.map(appointment=><tr>
+              appointments.map(appointment=><tr>
                 <td>{appointment.name}</td>
                 <td>{appointment.service}</td>
                 <td>{appointment.date}</td>
-                <td>Paid</td>
+                <td>{appointment.price}</td>
+                <td>{appointment.email}</td>
+                <td>{appointment.phone}</td>
                 <td>
-                  <button onClick={()=>{handleDone(appointment._id)}} className="btn btn-warning">Done</button>
+                  <button onClick={()=>{handleEdit(appointment._id)}} className="btn btn-primary admin-button">Edit</button>
+                  <button onClick={()=>{handleDelete(appointment._id)}} className="btn btn-warning admin-button">Delete</button>
+
                 </td>
               </tr>)
             }

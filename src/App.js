@@ -19,6 +19,7 @@ import Admin from './Components/Admin/Admin';
 import CheckReviews from './Components/Admin/CheckReviews/CheckReviews';
 import ClientOrders from './Components/Admin/ClientOrders/ClientOrders';
 import CheckAdmin from './Components/Admin/CheckAdmin/CheckAdmin';
+import Statistics from './Components/Admin/Statistics/Statistics';
 
 export const UserContext = createContext('');
 
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route path="/appoint">
             <Appointment></Appointment>
+          </Route>
+          <Route path="/statistics" >
+            <Statistics></Statistics>
           </Route>
         </Switch>
       </Router>

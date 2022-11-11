@@ -9,7 +9,7 @@ import { UserContext } from '../../App';
 import {Form, Button, Container } from 'react-bootstrap';
 import reviewPhoto from '../../images/reviewPhoto.jpg';
 import {Notify} from '../Notify/Notify';
-
+import { API_URL } from '../Constants/Constant';
 
 
 
@@ -35,7 +35,7 @@ const Dashboard = () => {
     const handleSubmit = () => {
         console.log(userReview);
         userReview.user = loggedinUser.name;
-        fetch('https://infinite-castle-13224.herokuapp.com/addReview', {
+        fetch(API_URL+'/addReview', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userReview)

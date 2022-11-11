@@ -26,20 +26,26 @@ const Payment = () => {
     console.log((paymentData));
 
     useEffect(() => {
-        fetch(API_URL+'/getService?email=' + email)
-            .then(response => response.json())
-            .then(data =>{
-                setOrderedService(data)
-                calculateTotal(data);
-            }).catch((err)=>console.log(err));
+        getServices();
     }, [email])
 
+
+    const getServices =()=>{
+        fetch(API_URL+'/getService?email=' + email)
+        .then(response => response.json())
+        .then(data =>{
+            setOrderedService(data)
+            calculateTotal(data);
+        }).catch((err)=>console.log(err));
+    };
+
     const handleRemoveService=(id)=>{
-        fetch(API_URL+`/removeItem/${id}`,{
+        fetch(API_URL+`/deleteAppointment/${id}`,{
             method: 'DELETE'
         })
         .then(response => response.json())
         .then(data=>{
+            getServices();
             console.log(data);
         }).catch(err=>console.log(err));
     }
