@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { API_URL } from "../../../Constants/Constant";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = () => {
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    getReviewStars();
+  }, []);
+
+  const getReviewStars = () => {
+    fetch(API_URL + "/reviews")
+      .then((response) => response.json())
+      .then((data) => {
+        const newArr = [];
+        data.map((stars) => {
+          return newArr.push(stars.rating);
+        });
+        const count = {};
+        newArr.forEach((element) => {
+          count[element] = (count[element] || 0) + 1;
+        });
+        let chartData = Object.values(count);
+        setChartData(chartData);
+        //setStarRating(newArr);
+      });
+  };
+
+  // const countStars = () => {
+  //   const count = {};
+  //   starRating.forEach((element) => {
+  //     count[element] = (count[element] || 0) + 1;
+  //   });
+  //   let chartData = Object.values(count);
+  //   setChartData(chartData);
+  // };
+
+  console.log(chartData);
+
   const data = {
-    labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star", "Orange"],
+    labels: ["1 Star", "2 Star", "3 Star", "4 Star", "5 Star"],
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: chartData || [2, 4, 2, 1, 6],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",

@@ -33,7 +33,6 @@ const CheckReviews = () => {
       });
   };
 
-  console.log(reviews);
   return (
     <div className="admin row">
       <div className="col-md-2">

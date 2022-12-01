@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import { Notify } from "../../Notify/Notify";
 import { API_URL } from "../../Constants/Constant";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const customStyles = {
@@ -142,13 +141,6 @@ const EditAppointmentModal = ({
                             <input ref={register({ required: true })} className="form-control" name="age" placeholder="Your Age" type="number" />
                             {errors.age && <span className="text-danger">This field is required</span>}
                         </div> */}
-
-            <div className="col-4 mb-5">
-              <DatePicker
-                selected={startDate}
-                onChange={(e) => handleInputChange(e)}
-              />
-            </div>
           </div>
 
           <div className="form-group text-right mt-5">
