@@ -17,7 +17,6 @@ import ClientOrders from "./Components/Admin/ClientOrders/ClientOrders";
 import CheckAdmin from "./Components/Admin/CheckAdmin/CheckAdmin";
 import Statistics from "./Components/Admin/Statistics/Statistics";
 import CheckPayment from "./Components/Admin/CheckPayments/CheckPayment";
-
 export const UserContext = createContext("");
 
 function App() {
@@ -50,9 +49,9 @@ function App() {
           <Route path="/clientOrders">
             <ClientOrders></ClientOrders>
           </Route>
-          <Route path="/admin">
+          <PrivateRoute path="/admin">
             <Admin></Admin>
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path="/checkAdmin">
             <CheckAdmin></CheckAdmin>
           </PrivateRoute>

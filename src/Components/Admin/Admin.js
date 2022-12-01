@@ -5,6 +5,7 @@ import AdminSidebar from "./AdminSidebar/AdminSidebar";
 import "./Admin.css";
 import { API_URL } from "../Constants/Constant";
 import EditAppointmentModal from "./EditAdminModal/EditAdminModal";
+import { BarLoader } from "react-spinner-animated";
 
 const Admin = () => {
   //const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,6 +15,7 @@ const Admin = () => {
   const [inputData, setInputData] = useState({});
   //const date = selectedDate.toDateString();
   const [isEdited, setIsEdited] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   console.log(closeModal, setCloseModal);
 
@@ -34,10 +36,14 @@ const Admin = () => {
     getAppointments();
   }, [isEdited]);
 
-  const getAppointments = () => {
-    fetch(API_URL + "/appointments")
+  const getAppointments = async () => {
+    await fetch(API_URL + "/appointments")
       .then((res) => res.json())
-      .then((data) => setAppointments(data))
+      .then((data) => {
+        console.log(data);
+        setAppointments(data);
+        setIsLoaded(true);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -85,56 +91,68 @@ const Admin = () => {
         setIsModalOpen={setIsModalOpen}
       ></EditAppointmentModal>
 
-      <div className="col-md-10 mt-5">
-        <h4>
-          Total <span className="all-text-color">{appointments?.length}</span>{" "}
-          upcoming appointments
-        </h4>
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Client Name</th>
-              <th scope="col">Ordered service</th>
-              <th scope="col">Appointment Date</th>
-              <th scope="col">Payment status</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {appointments.map((appointment) => (
+      {isLoaded ? (
+        <div className="col-md-10 mt-5">
+          <h4>
+            Total <span className="all-text-color">{appointments?.length}</span>{" "}
+            upcoming appointments
+          </h4>
+          <table class="table">
+            <thead class="thead-dark">
               <tr>
-                <td>{appointment.name}</td>
-                <td>{appointment.service}</td>
-                <td>{appointment.date}</td>
-                <td>{appointment.price}</td>
-                <td>{appointment.email}</td>
-                <td>{appointment.phone}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      handleEdit(appointment._id);
-                    }}
-                    className="btn btn-primary admin-button"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => {
-                      handleDelete(appointment._id);
-                    }}
-                    className="btn btn-warning admin-button"
-                  >
-                    Delete
-                  </button>
-                </td>
+                <th scope="col">Client Name</th>
+                <th scope="col">Ordered service</th>
+                <th scope="col">Appointment Date</th>
+                <th scope="col">Payment status</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+
+            <tbody>
+              {appointments.map((appointment) => (
+                <tr>
+                  <td>{appointment.name}</td>
+                  <td>{appointment.service}</td>
+                  <td>{appointment.date}</td>
+                  <td>{appointment.price}</td>
+                  <td>{appointment.email}</td>
+                  <td>{appointment.phone}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        handleEdit(appointment._id);
+                      }}
+                      className="btn btn-primary admin-button"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
+                        handleDelete(appointment._id);
+                      }}
+                      className="btn btn-warning admin-button"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="col-md-10 pl-5">
+          <BarLoader
+            text={"Please wait..."}
+            bgColor={"#ffffff"}
+            center={false}
+            width={"600px"}
+            height={"400px"}
+          />
+        </div>
+      )}
     </div>
   );
 };
