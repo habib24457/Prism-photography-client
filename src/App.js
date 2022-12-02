@@ -17,6 +17,7 @@ import ClientOrders from "./Components/Admin/ClientOrders/ClientOrders";
 import CheckAdmin from "./Components/Admin/CheckAdmin/CheckAdmin";
 import Statistics from "./Components/Admin/Statistics/Statistics";
 import CheckPayment from "./Components/Admin/CheckPayments/CheckPayment";
+import PdfGenerator from "./Components/Admin/CheckPayments/PdfGenerator/PdfGenerator";
 export const UserContext = createContext("");
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
           </Route>
           <Route path="/statistics">
             <Statistics></Statistics>
+          </Route>
+
+          <Route path="/pdf/:id">
+            <PdfGenerator />
           </Route>
 
           <Route path="/checkPayment">
