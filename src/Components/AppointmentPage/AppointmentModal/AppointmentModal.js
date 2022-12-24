@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AppointmentModal.css";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
 import { Notify } from "../../Notify/Notify";
 import { API_URL } from "../../Constants/Constant";
+import { Spinner } from "react-spinner-animated";
+import "react-spinner-animated/dist/index.css";
 
 const customStyles = {
   content: {
@@ -31,26 +33,35 @@ const AppointmentModal = ({
   } = useForm();
   //console.log(appointService)
 
-  const onSubmit = (data) => {
+  const [stillLoading, setStillLoading] = useState(false);
+
+  const onSubmit = async (data) => {
     data.service = appointService;
     data.date = date;
     data.price = price;
     data.created = new Date();
     console.log(data);
-    fetch(API_URL + "/addAppointment", {
+    await fetch(API_URL + "/addAppointment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((success) => {
+        setStillLoading(true);
         if (success) {
           Notify(6);
           closeModal();
+          setStillLoading(false);
           // alert('Appointment successful');
+        } else {
+          Notify(7);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Notify(7);
+        console.log(err);
+      });
   };
 
   return (
@@ -144,9 +155,13 @@ const AppointmentModal = ({
           </div>
 
           <div className="form-group text-right">
-            <button type="submit" className="brand-button">
-              Make an Appointment
-            </button>
+            {stillLoading ? (
+              <Spinner width={"150px"} height={"150px"} />
+            ) : (
+              <button type="submit" className="brand-button">
+                Make an Appointment
+              </button>
+            )}
           </div>
         </form>
       </Modal>

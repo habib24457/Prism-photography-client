@@ -13,8 +13,8 @@ const ReviewCard = ({ review }) => {
   };
 
   return (
-    <div className="card-design col-md-3">
-      <div>{review.review}</div>
+    <div className="card-design text-center">
+      <div className="text-des">Review:{review.review}</div>
       <div className="stars">
         <div style={styles.stars}>
           {stars.map((_, index) => {
@@ -52,8 +52,8 @@ const styles = {
     borderRadius: 5,
     padding: 10,
     margin: "20px 0",
-    minHeight: 100,
-    width: 300,
+    minHeight: 200,
+    width: 500,
   },
   button: {
     border: "1px solid #a9a9a9",

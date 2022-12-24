@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NavigationBar from "../HomePage/Home/NavigationBar/NavigationBar";
 import "./SearchPhoto.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,10 +57,10 @@ const SearchPhoto = () => {
       <div className="row mt-5 text-center">
         {imageData.map((image) => (
           <div className="col-md-4 mb-3 img-div p-3">
-            <img src={image.webformatURL} className="image-show" />
+            <img src={image.webformatURL} className="image-show" alt="" />
 
             <div className="pic-info mt-1">
-              <a href={image.pageURL} target="_blank">
+              <a href={image.pageURL} target="_blank" rel="noreferrer">
                 <button className="btn btn-success p-2">
                   Visit original page
                 </button>

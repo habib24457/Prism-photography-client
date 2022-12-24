@@ -8,22 +8,29 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@react-pdf/renderer": "2.1.0",
+    "@react-pdf/font": "2.2.0",
     "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.13.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
-    "firebase": "^8.4.1",
+    "chart.js": "^3.9.1",
+    "firebase": "^8.10.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-calendar": "^3.3.1",
+    "react-chartjs-2": "^4.3.1",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^6.15.5",
+    "react-icons": "^4.6.0",
     "react-loading": "^2.0.3",
     "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-spinner-animated": "^3.1.1",
     "react-toastify": "^7.0.4",
     "swiper": "^6.6.2",
     "web-vitals": "^1.0.1"
@@ -51,5 +58,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "faker": "5.5.3"
+  },
+  "resolutions": {
+    "@react-pdf/font": "2.2.0"
   }
 }

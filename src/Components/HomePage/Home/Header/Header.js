@@ -18,7 +18,6 @@ const Header = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         width: "100vw",
-        height: "80vh",
       }}
     >
       <Container>
@@ -100,9 +99,6 @@ const Header = () => {
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
-            <Link to="/searchPhoto">
-              <button class="brand-button mt-3">Search random photos</button>
-            </Link>
           </div>
         </div>
       </Container>
