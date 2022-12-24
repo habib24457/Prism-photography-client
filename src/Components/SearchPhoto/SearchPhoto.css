@@ -1,0 +1,17 @@
+.search-area{
+    display: flex;
+}
+
+.image-show{
+    cursor: pointer;
+    height: 350px;
+    width: 350px;
+}
+
+.img-div{
+    border: 1px solid rgb(157, 149, 149);
+}
+
+.pic-info{
+    
+}
