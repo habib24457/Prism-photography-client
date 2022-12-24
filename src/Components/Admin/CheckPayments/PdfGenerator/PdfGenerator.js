@@ -182,7 +182,7 @@ const PdfGenerator = () => {
             loading ? (
               <button>Loading Document...</button>
             ) : (
-              <button className="btn btn-success">Download</button>
+              <button className="btn btn-success">Download Pdf</button>
             )
           }
         </PDFDownloadLink>
