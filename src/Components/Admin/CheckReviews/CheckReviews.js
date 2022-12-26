@@ -9,9 +9,12 @@ import "./CheckReviews.css";
 const CheckReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [chartData, setChartData] = useState([]);
+  const [chartLabel, setChartLabel] = useState([]);
 
   useEffect(() => {
     getReviews();
+    // eslint-disable-next-line
   }, []);
 
   const handleReviewRemove = (id) => {
@@ -30,9 +33,35 @@ const CheckReviews = () => {
     fetch(API_URL + "/reviews")
       .then((response) => response.json())
       .then((data) => {
+        const newArr = [];
+        data.map((stars) => {
+          return newArr.push(stars.rating);
+        });
+        createChartDataLabel(newArr);
+        console.log(data);
         setReviews(data);
         setIsLoaded(true);
-      });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const createChartDataLabel = (newArr) => {
+    console.log(newArr);
+    const countStars = {};
+    let labels = [];
+    newArr.forEach((element) => {
+      countStars[element] = (countStars[element] || 0) + 1;
+    });
+    let pieData = Object.values(countStars);
+    setChartData(pieData);
+
+    for (let i = 0; i <= newArr.length; i++) {
+      if (newArr.includes(i)) {
+        labels.push(i);
+      }
+    }
+
+    setChartLabel(labels);
   };
 
   return (
@@ -76,7 +105,7 @@ const CheckReviews = () => {
 
           <div className="col-md-4 mt-5">
             <h3>Ratings in Pie-chart</h3>
-            <PieChart></PieChart>
+            <PieChart chartData={chartData} chartLabel={chartLabel}></PieChart>
           </div>
         </>
       ) : (

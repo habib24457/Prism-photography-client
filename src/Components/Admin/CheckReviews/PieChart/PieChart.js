@@ -1,54 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { API_URL } from "../../../Constants/Constant";
+//import { API_URL } from "../../../Constants/Constant";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = () => {
-  const [chartData, setChartData] = useState([]);
-  const [chartLabel, setChartLabel] = useState([]);
+const PieChart = ({ chartData, chartLabel }) => {
+  // const [chartData, setChartData] = useState([]);
+  // const [chartLabel, setChartLabel] = useState([]);
 
-  useEffect(() => {
-    getReviewStars();
-  }, []);
+  // useEffect(() => {
+  //   getReviewStars();
+  //   // eslint-disable-next-line
+  // }, []);
 
-  const getReviewStars = () => {
-    fetch(API_URL + "/reviews")
-      .then((response) => response.json())
-      .then((data) => {
-        const newArr = [];
-        data.map((stars) => {
-          return newArr.push(stars.rating);
-        });
-        const count = {};
-        console.log(newArr);
-        newArr.forEach((element) => {
-          console.log(element);
-          count[element] = (count[element] || 0) + 1;
-        });
-        let chartData = Object.values(count);
-        setChartLabel(createLabels(newArr));
-        setChartData(chartData);
-        //setStarRating(newArr);
-      });
-  };
+  // const getReviewStars = () => {
+  //   fetch(API_URL + "/reviews")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const newArr = [];
+  //       data.map((stars) => {
+  //         return newArr.push(stars.rating);
+  //       });
+  //       const count = {};
+  //       //console.log(newArr);
+  //       newArr.forEach((element) => {
+  //         // console.log(element);
+  //         count[element] = (count[element] || 0) + 1;
+  //       });
+  //       let chartData = Object.values(count);
+  //       setChartLabel(createLabels(newArr));
+  //       setChartData(chartData);
+  //       //setStarRating(newArr);
+  //     });
+  // };
 
-  const createLabels = (newArr) => {
-    console.log(newArr);
+  // const createLabels = (newArr) => {
+  //   //console.log(newArr);
 
-    let labels = [];
+  //   let labels = [];
 
-    for (let i = 0; i <= newArr.length; i++) {
-      if (newArr.includes(i)) {
-        labels.push(i);
-        //console.log("Value exist=", i);
-      }
-    }
-    //console.log(labels);
+  //   for (let i = 0; i <= newArr.length; i++) {
+  //     if (newArr.includes(i)) {
+  //       labels.push(i);
+  //       //console.log("Value exist=", i);
+  //     }
+  //   }
+  //   //console.log(labels);
 
-    return labels;
-  };
+  //   return labels;
+  // };
 
   // const countStars = () => {
   //   const count = {};
@@ -59,7 +60,7 @@ const PieChart = () => {
   //   setChartData(chartData);
   // };
 
-  console.log(chartData);
+  //console.log(chartData);
 
   const data = {
     labels: chartLabel,

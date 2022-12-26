@@ -25,6 +25,7 @@ const Dashboard = () => {
   });
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
+  const [characterCount, setCharacterCount] = useState(0);
   const stars = Array(5).fill(0);
 
   console.log(loggedinUser);
@@ -78,6 +79,18 @@ const Dashboard = () => {
     return false;
   };
 
+  const wordCounter = (e) => {
+    if (characterCount >= 120) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  };
+
+  const handleClipboardEvent = (e) => {
+    console.log(e.target.value.length);
+  };
+
   /** 
     const handleDateChange = date => {
         setSelectedDate(date);
@@ -118,12 +131,24 @@ const Dashboard = () => {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Write something...</Form.Label>
               <Form.Control
+                maxLength={120}
                 onBlur={handleBlur}
                 as="textarea"
                 name="review"
                 rows={3}
                 placeholder="Share your opinion..."
+                onChange={(e) => {
+                  setCharacterCount(e.target.value.length);
+                }}
+                onKeyPress={(e) => {
+                  wordCounter(e);
+                }}
+                onPaste={(e) => {
+                  wordCounter(e);
+                }}
+                onCopy={(e) => handleClipboardEvent(e)}
               />
+              <p>{characterCount}/120</p>
             </Form.Group>
 
             <Form.Group>
