@@ -4,6 +4,7 @@ import AdminSidebar from "../AdminSidebar/AdminSidebar";
 import { API_URL } from "../../Constants/Constant";
 import PieChart from "./PieChart/PieChart.js";
 import { BarLoader } from "react-spinner-animated";
+import "./CheckReviews.css";
 
 const CheckReviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -21,7 +22,8 @@ const CheckReviews = () => {
       .then((result) => {
         //console.log(result);
         getReviews();
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   const getReviews = () => {
@@ -41,7 +43,7 @@ const CheckReviews = () => {
 
       {isLoaded ? (
         <>
-          <div className="col-md-4 mt-5">
+          <div className="col-md-4 mt-5 review-wrapper">
             <table class="table">
               <thead class="thead-dark">
                 <tr>
