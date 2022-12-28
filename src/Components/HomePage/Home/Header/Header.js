@@ -1,24 +1,23 @@
 import React from "react";
 import "./Header.css";
-
-import caro1 from "../../../../images/caro1.jpg";
-import caro2 from "../../../../images/caro2.jpg";
-import caro3 from "../../../../images/caro3.jpg";
-
-import background from "../../../../images/back.png";
+// import caro1 from "../../../../images/caro1.jpg";
+// import caro2 from "../../../../images/caro2.jpg";
+// import caro3 from "../../../../images/caro3.jpg";
+// import background from "../../../../images/back.png";
 import { Link } from "react-router-dom";
-import { Container, Carousel } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 const Header = () => {
   return (
     <div
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100vw",
-      }}
+      // style={{
+      //   backgroundImage: `url(${background})`,
+      //   backgroundPosition: "center",
+      //   backgroundSize: "cover",
+      //   backgroundRepeat: "no-repeat",
+      //   width: "100vw",
+      // }}
+      className="background-des"
     >
       <Container>
         <div className="row mt-5 pt-5">
@@ -26,7 +25,7 @@ const Header = () => {
             <div>
               <h1>
                 Professional level{" "}
-                <span style={{ color: "rgb(76, 121, 151)" }}>Photography</span>{" "}
+                <span style={{ color: "#ffffff" }}>Photography</span>{" "}
               </h1>
               <p>
                 If you are looking for awesome photography to capture your
@@ -39,7 +38,9 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="col-md-6  mt-5">
+          <div className="col-md-6 mt-5"></div>
+
+          {/* <div className="col-md-6  mt-5">
             <Carousel>
               <Carousel.Item>
                 <img
@@ -99,7 +100,7 @@ const Header = () => {
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>

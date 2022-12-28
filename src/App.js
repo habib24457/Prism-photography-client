@@ -51,9 +51,9 @@ function App() {
           <Route path="/clientOrders">
             <ClientOrders></ClientOrders>
           </Route>
-          <PrivateRoute path="/admin">
+          <Route path="/admin">
             <Admin></Admin>
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path="/checkAdmin">
             <CheckAdmin></CheckAdmin>
           </PrivateRoute>

@@ -3,7 +3,7 @@
     height: 10rem;
     box-shadow: 10px 5px 5px #e4e6e7;
     text-align: center;
-    background-color: #c2ddd4;
+    background-color: blueviolet;
     margin: auto;
 }
 
@@ -13,5 +13,7 @@
 }
 
 .text-des{
-font-size: 35px;
+font-size: 25px;
+max-height: 12vh;
+overflow: scroll;
 }

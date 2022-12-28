@@ -26,7 +26,7 @@ const photographyServices = [
 
 const Services = () => {
   return (
-    <div style={{ backgroundColor: "#378369" }}>
+    <div className="div-wrapper">
       <Container>
         <div className="d-flex justify-content-center">
           <div className="row w-75  mt-5">

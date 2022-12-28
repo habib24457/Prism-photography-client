@@ -1,6 +1,8 @@
 .footer-design{
-   background-color: #378369; 
-    height: 250px;
+   background-color: blueviolet; 
+   width: 100vw;
+    height: 30vh;
     color:rgb(195, 202, 207);
-    width: 100%;
+    border-top-left-radius: 50% 40%;
+border-top-right-radius: 50% 40%;
 }

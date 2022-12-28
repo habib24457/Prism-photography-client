@@ -5,7 +5,7 @@ border-radius:1.5%;
 
 .check-button{
     margin-top:10px;
-    background-color: #378369;
+    background-color: #133374;
     border-radius: 2.5%;
     height: 60px;
     width:120px;
@@ -14,4 +14,7 @@ border-radius:1.5%;
     padding:10px;
     font-size:1.2rem;
     box-shadow:10px 5px 5px #4c7997;
+}
+.admin-descrip-wrapper{
+    padding: 30px;
 }

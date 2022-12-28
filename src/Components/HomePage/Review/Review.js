@@ -5,6 +5,7 @@ import ReactLoading from "react-loading";
 import { API_URL } from "../../Constants/Constant";
 import "./style.css";
 import { Link } from "react-router-dom";
+import reviewPhoto from "../../../images/reviewPhoto.jpg";
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
@@ -30,8 +31,7 @@ const Review = () => {
       <h1 className="all-text-color text-center">Customer Reviews</h1>
       {done ? (
         <div className="row">
-          <div className="col-md-2"></div>
-          <div className="col-md-8 text-center">
+          <div className="col-md-6 text-center">
             <Carousel className="caro-des">
               {reviews.map((review) => (
                 <Carousel.Item>
@@ -47,7 +47,9 @@ const Review = () => {
               ))}
             </Carousel>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-6">
+            <img src={reviewPhoto} style={{ width: "350px" }} alt="" />
+          </div>
         </div>
       ) : (
         <div className="row justify-content-center mt-5 pt-5">

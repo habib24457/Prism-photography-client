@@ -20,15 +20,14 @@ export const SidebarData = [
     link: "/admin",
   },
   {
-    title: "Statistics",
-    icon: <FontAwesomeIcon icon={faToolbox} />,
-    link: "/statistics",
-  },
-
-  {
     title: "Check reviews",
     icon: <FontAwesomeIcon icon={faBook} />,
     link: "/checkReview",
+  },
+  {
+    title: "Statistics",
+    icon: <FontAwesomeIcon icon={faToolbox} />,
+    link: "/statistics",
   },
   {
     title: "Check Payments",

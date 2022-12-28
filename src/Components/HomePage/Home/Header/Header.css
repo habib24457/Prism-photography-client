@@ -5,3 +5,15 @@
     color:rgb(195, 202, 207);
 }
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.background-des{
+background: blueviolet;
+width: 100vw;
+border-bottom-left-radius: 50% 40%;
+border-bottom-right-radius: 50% 40%;
+}
+
