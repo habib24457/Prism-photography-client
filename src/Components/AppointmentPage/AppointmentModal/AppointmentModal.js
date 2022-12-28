@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AppointmentModal.css";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
@@ -34,11 +34,11 @@ const AppointmentModal = ({
   //console.log(appointService)
 
   const [stillLoading, setStillLoading] = useState(false);
-  const [ageNum, setAgeNum] = useState(10);
+  //const [ageNum, setAgeNum] = useState(10);
 
-  useEffect(() => {
-    ageValidate();
-  }, [ageNum]);
+  // useEffect(() => {
+  //   ageValidate();
+  // }, [ageNum]);
 
   const onSubmit = async (data) => {
     data.service = appointService;
@@ -69,9 +69,9 @@ const AppointmentModal = ({
       });
   };
 
-  const ageValidate = () => {
-    console.log(ageNum);
-  };
+  // const ageValidate = () => {
+  //   console.log(ageNum);
+  // };
 
   return (
     <div>
