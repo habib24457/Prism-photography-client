@@ -7,6 +7,7 @@ import {
   faUsersCog,
   faShoppingCart,
   faPhone,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavigationBar = () => {
@@ -60,6 +61,13 @@ const NavigationBar = () => {
               className="justify-content-end"
             >
               <Nav>
+                <Nav.Link href="/home">
+                  <FontAwesomeIcon style={{ color: "#ffffff" }} icon={faHome} />
+                  <span style={{ color: "#ffffff", padding: "10px" }}>
+                    Home
+                  </span>
+                </Nav.Link>
+
                 <Nav.Link href="/checkAdmin">
                   <FontAwesomeIcon
                     style={{ color: "#ffffff" }}

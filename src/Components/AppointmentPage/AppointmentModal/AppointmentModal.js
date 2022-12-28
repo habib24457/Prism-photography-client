@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./AppointmentModal.css";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
@@ -34,6 +34,11 @@ const AppointmentModal = ({
   //console.log(appointService)
 
   const [stillLoading, setStillLoading] = useState(false);
+  const [ageNum, setAgeNum] = useState(10);
+
+  useEffect(() => {
+    ageValidate();
+  }, [ageNum]);
 
   const onSubmit = async (data) => {
     data.service = appointService;
@@ -62,6 +67,10 @@ const AppointmentModal = ({
         Notify(7);
         console.log(err);
       });
+  };
+
+  const ageValidate = () => {
+    console.log(ageNum);
   };
 
   return (
@@ -123,7 +132,7 @@ const AppointmentModal = ({
             )}
           </div>
           <div className="form-group row">
-            <div className="col-4">
+            <div className="col-12">
               <select
                 className="form-control"
                 name="gender"
@@ -140,7 +149,7 @@ const AppointmentModal = ({
                 <span className="text-danger">This field is required</span>
               )}
             </div>
-            <div className="col-4">
+            {/* <div className="col-4">
               <input
                 ref={register({ required: true })}
                 className="form-control"
@@ -149,9 +158,9 @@ const AppointmentModal = ({
                 type="number"
               />
               {errors.age && (
-                <span className="text-danger">This field is required</span>
-              )}
-            </div>
+                <span className="text-danger">Age has to be at least 14</span>
+              )} 
+            </div> */}
           </div>
 
           <div className="form-group text-right">

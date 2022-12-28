@@ -6,6 +6,8 @@ import "./Header.css";
 // import background from "../../../../images/back.png";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
@@ -38,7 +40,54 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="col-md-6 mt-5"></div>
+          <div className="col-md-6 mt-5">
+            <ul style={{ listStyle: "none" }}>
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                Full-stack website
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                You can choose services and order services
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                Your appointment will be saved in the MongoDB after Firebase
+                authentication
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                You can Pay for services (Payment Gateway: Stripe)
+              </li>
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                You can write reviews and give stars.
+              </li>
+
+              <li>
+                <FontAwesomeIcon
+                  style={{ color: "#ffffff" }}
+                  icon={faCheckDouble}
+                />
+                Created API with different endpoints using Express JS (Node JS)
+              </li>
+            </ul>
+          </div>
 
           {/* <div className="col-md-6  mt-5">
             <Carousel>
