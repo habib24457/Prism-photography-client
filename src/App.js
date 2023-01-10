@@ -19,6 +19,10 @@ import Statistics from "./Components/Admin/Statistics/Statistics";
 import CheckPayment from "./Components/Admin/CheckPayments/CheckPayment";
 import PdfGenerator from "./Components/Admin/CheckPayments/PdfGenerator/PdfGenerator";
 import SearchPhoto from "./Components/SearchPhoto/SearchPhoto";
+import SharePhotos from "./Components/UserMenu/SharePhotos/SharePhotos";
+import BuyAndSell from "./Components/UserMenu/BuyAndSell/BuyAndSell";
+import Profile from "./Components/UserMenu/CheckProfile/Profile";
+
 export const UserContext = createContext("");
 
 function App() {
@@ -77,6 +81,16 @@ function App() {
 
           <Route path="/searchPhoto">
             <SearchPhoto></SearchPhoto>
+          </Route>
+
+          <Route path="/sharePhotos">
+            <SharePhotos />
+          </Route>
+          <Route path="/buySell">
+            <BuyAndSell />
+          </Route>
+          <Route path="/profile">
+            <Profile />
           </Route>
         </Switch>
       </Router>

@@ -4,6 +4,7 @@ import AppointmentHeader from "../AppointmentHeader/AppointmentHeader";
 import BookAppointment from "../BookAppointment/BookAppointment";
 import { Container } from "react-bootstrap";
 import NavigationBar from "../../HomePage/Home/NavigationBar/NavigationBar";
+import Sidebar from "../Sidebar/Sidebar";
 
 const Appointment = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -14,22 +15,22 @@ const Appointment = () => {
     setIsDateClicked(true);
   };
   return (
-    <Container>
+    <>
       <NavigationBar></NavigationBar>
-      <div className="row">
-        <div className="col-md-4">
-          <AppointmentHeader
-            handleDateChange={handleDateChange}
-          ></AppointmentHeader>
+      <div className="row mt-5">
+        <div className="col-md-2">
+          <Sidebar />
         </div>
-        <div className="col-md-8">
-          <BookAppointment
-            date={selectedDate}
-            isDateClicked={isDateClicked}
-          ></BookAppointment>
+
+        <div className="col-md-4">
+          <AppointmentHeader handleDateChange={handleDateChange} />
+        </div>
+
+        <div className="col-md-6">
+          <BookAppointment date={selectedDate} isDateClicked={isDateClicked} />
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 
