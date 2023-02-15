@@ -14,7 +14,7 @@ const Footer = () => {
         <h3>Contact Us</h3>
         <p>Address:Essen,Germany</p>
         <p>Email:habiburehman390@gmail.com</p>
-        <p>Phone: +491632323232323</p>
+        <p>Phone: +4915758268375</p>
       </div>
 
       <div className="col-md-6 text-center mt-5">
