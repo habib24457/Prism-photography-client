@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import AppointmentHeader from "../AppointmentHeader/AppointmentHeader";
 //import AppointmentNav from '../AppointmentNav/AppointmentNav';
 import BookAppointment from "../BookAppointment/BookAppointment";
-import { Container } from "react-bootstrap";
 import NavigationBar from "../../HomePage/Home/NavigationBar/NavigationBar";
 import Sidebar from "../Sidebar/Sidebar";
 

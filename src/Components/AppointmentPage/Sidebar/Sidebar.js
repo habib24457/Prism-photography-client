@@ -1,13 +1,9 @@
 import React from "react";
 import "./styles.css";
 import { SidebarData } from "./SidebarData";
-import { Link, useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const history = useHistory();
-
   return (
     <div className="admin-sidebar mt-3">
       <ul className="sidebar-list">
