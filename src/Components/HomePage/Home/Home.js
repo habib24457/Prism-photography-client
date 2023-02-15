@@ -15,6 +15,7 @@ const Home = () => {
     <div>
       <NavigationBar></NavigationBar>
       <Header></Header>
+      <hr />
       <DrawSell></DrawSell>
       <hr />
       <SearchRandomImg></SearchRandomImg>
