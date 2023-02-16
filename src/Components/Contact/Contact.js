@@ -8,6 +8,7 @@ import {
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import CV from "../../images/CV.png";
 
 const Contact = () => {
   return (
@@ -74,15 +75,11 @@ const Contact = () => {
           <div class="card mb-3" style={{ maxWidth: "540px" }}>
             <div class="row g-0">
               <div class="col-md-4">
-                <img
-                  src="https://image.ibb.co/dUTfmJ/profile_img.jpg"
-                  class="img-fluid rounded-start"
-                  alt="profile"
-                />
+                <img src={CV} class="img-fluid rounded-start" alt="profile" />
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">John Doe</h5>
+                  <h5 class="card-title">Habibur Rahman</h5>
                   <p class="card-text">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry. Lorem Ipsum has been the industry's
